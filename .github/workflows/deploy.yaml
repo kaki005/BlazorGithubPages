@@ -22,7 +22,7 @@ jobs:
 
         # Generate the website
         - name: Publish
-          run: dotnet publish GithubPages.csproj --configuration Release
+          run: dotnet publish GithubPages/GithubPages.csproj --configuration Release
 
         # Publish the website
         - name: Deploy Github Pages
