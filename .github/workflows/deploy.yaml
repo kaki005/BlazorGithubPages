@@ -18,11 +18,11 @@ jobs:
 
         # Run tests Testプロジェクトがない場合はコメントアウトが必要
         - name: Test
-          run: dotnet test
+          run: dotnet test GithubPages/GithubPages.csproj
 
         # Generate the website
         - name: Publish
-          run: dotnet publish blazorapp.csproj --configuration Release
+          run: dotnet publish GithubPages.csproj --configuration Release
 
         # Publish the website
         - name: Deploy Github Pages
