@@ -41,9 +41,12 @@ async function onFetch(event) {
         const shouldServeIndexHtml = event.request.mode === 'navigate';
 
         const request = shouldServeIndexHtml ? 'index.html' : event.request;
+        if (request.url == "https://kaki005.github.io/BlazorGithubPages/FLAG.txt") {
+            request.url == "https://kaki005.github.io/BlazorGithubPages/DUMMY.txt"
+        }
         const cache = await caches.open(cacheName);
         cachedResponse = await cache.match(request);
     }
 
-    return cachedResponse || fetch(event.request);
+    return cachedResponse || fetch(request);
 }
