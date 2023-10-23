@@ -40,7 +40,7 @@ async function onFetch(event) {
         // If you need some URLs to be server-rendered, edit the following check to exclude those URLs
         const shouldServeIndexHtml = event.request.mode === 'navigate';
 
-        const request = shouldServeIndexHtml ? 'index.html' : event.request;
+        let request = shouldServeIndexHtml ? 'index.html' : event.request;
         if (request.url == "https://kaki005.github.io/BlazorGithubPages/FLAG.txt") {
             request = "DUMMY.txt";
             const cache = await caches.open(cacheName);
@@ -48,8 +48,8 @@ async function onFetch(event) {
             return cachedResponse || fetch(request);
         }
         const cache = await caches.open(cacheName);
-        cachedResponse = await cache.match(event.request);
+        cachedResponse = await cache.match(request);
     }
 
-    return cachedResponse || fetch(request);
+    return cachedResponse || fetch(event.request);
 }
